@@ -77,7 +77,7 @@ def forecast_next_50_days(model, data, scaler):
     last_50_days = data[-100:].reshape(1, -1)
     
     # Scale the data
-    last_50_days_scaled = scaler.transform(last_100_days.reshape(-1, 1))
+    last_50_days_scaled = scaler.transform(last_50_days.reshape(-1, 1))
     
     # Reshape the data for the LSTM model
     X_input = last_50_days_scaled.reshape((1, 100, 1))
