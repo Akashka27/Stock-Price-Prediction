@@ -107,7 +107,7 @@ predicted_prices = forecast_next_50_days(model, data['Close'].values, scaler)
 forecast_date_range = pd.date_range(data.index[-1], periods=51, freq='D')[1:]
 
 # Plotting the forecast for the next 50 days
-st.subheader('Stock Price Forecast for the Next 100 Days')
+st.subheader('Stock Price Forecast for the Next 50 Days')
 fig5 = plt.figure(figsize=(10, 6))
 plt.plot(forecast_date_range, predicted_prices, color='blue', label='Forecasted Price')
 plt.title(f'{stock} 50-Day Price Forecast')
