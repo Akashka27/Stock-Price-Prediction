@@ -71,3 +71,47 @@ plt.xlabel("Time")
 plt.ylabel("Price")
 plt.show()
 st.pyplot(fig4)
+
+def forecast_next_50_days(model, data, scaler):
+    # Use the last 50 days from the training data for forecasting
+    last_50_days = data[-100:].reshape(1, -1)
+    
+    # Scale the data
+    last_50_days_scaled = scaler.transform(last_100_days.reshape(-1, 1))
+    
+    # Reshape the data for the LSTM model
+    X_input = last_50_days_scaled.reshape((1, 100, 1))
+    
+    # Initialize a list to store the predicted stock prices
+    predicted_prices = []
+    
+    # Predict the next 50 days
+    for _ in range(50):
+        predicted_price = model.predict(X_input)
+        
+        # Rescale the prediction back to the original scale (inverse scaling)
+        predicted_price_rescaled = scaler.inverse_transform(predicted_price)
+        
+        # Append the predicted price to the list
+        predicted_prices.append(predicted_price_rescaled[0][0])
+        
+        # Update the input sequence by adding the predicted price to the last sequence
+        X_input = np.append(X_input[:, 1:, :], predicted_price.reshape(1, 1, 1), axis=1)
+    
+    return predicted_prices
+
+# Forecast the next 50 days
+predicted_prices = forecast_next_50_days(model, data['Close'].values, scaler)
+
+# Generate a date range for the next 50 days
+forecast_date_range = pd.date_range(data.index[-1], periods=51, freq='D')[1:]
+
+# Plotting the forecast for the next 50 days
+st.subheader('Stock Price Forecast for the Next 100 Days')
+fig5 = plt.figure(figsize=(10, 6))
+plt.plot(forecast_date_range, predicted_prices, color='blue', label='Forecasted Price')
+plt.title(f'{stock} 50-Day Price Forecast')
+plt.xlabel('Date')
+plt.ylabel('Price')
+plt.legend()
+st.pyplot(fig5)
