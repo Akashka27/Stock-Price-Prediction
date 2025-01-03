@@ -8,7 +8,7 @@ model=load_model('STP.keras')
 
 st.header("Stock Price Prediction")
 stock=st.text_input("Enter Stock Symbol",'GOOG')
-start='2010-01-01'
+start='2013-01-01'
 end='2024-11-01'
 data=yf.download(stock,start,end)
 
