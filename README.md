@@ -1,15 +1,8 @@
 # Stock Price Prediction System 📊
 
-## Activity Log
-### Today
-- Stock Price Prediction System with Yahoo Finance  
-- Building Professional Real-Time Forecasting Tools  
-- Guide to Building Financial Predictors  
 
-### Yesterday
-- Email Spam Detection Model Code  
-- Technical Communication Quest: 2025-04  
-- Android Password Manager App Review  
+- Stock Price Prediction System with Yahoo Finance  
+ 
 
 ---
 
