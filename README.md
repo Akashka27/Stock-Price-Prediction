@@ -2,14 +2,7 @@
 
 
 - Stock Price Prediction System with Yahoo Finance  
- 
 
----
-
-## Quick Access
-[Live Demo](#) | [Developer Profile](#)  
-
----
 
 # Project Documentation
 
